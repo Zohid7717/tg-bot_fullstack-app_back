@@ -6,8 +6,10 @@ import fetch from "node-fetch"
 import cors from "cors";
 
 const app = express()
-const PORT = 3000
-const MONGO_URL = "mongodb://0.0.0.0:27017/base-for-bot"
+
+const POST = process.env.PORT
+const MONGO_URL = process.env.MONGO_URL
+
 
 app.use(cors())
 
@@ -16,8 +18,9 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use('/api/tg', tgRouts)
 
-const TELEGRAM_BOT_TOKEN='6704048843:AAFu4qn1_4HM0hBZHjsgwYG5tYrcQ1dC5cc'
-const TELEGRAM_CHAT_ID='5179267439'
+const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN
+const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID
+
 
 app.post('/api/submit-form', async (req, res) => {
   try {
